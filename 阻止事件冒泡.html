@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-2.1.1.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="content">
+			外层div
+			<span>内层span元素</span>
+			外层div
+		</div>
+		<div id="msg"></div>
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			$("span").bind("click",function(e){
+				var txt=$("#msg").html()+"<p>内层span元素被点击</p>";
+				$("#msg").html(txt);
+				e.stopPropagation();
+			});
+			$("#content").bind("click",function(e){
+				var txt=$("#msg").html()+"<p>外层div元素被点击</p>";
+				$("#msg").html(txt);
+				e.stopPropagation();
+			});
+			$("body").bind("click",function(){
+				var txt=$("#msg").html()+"<p>body元素被点击</p>";
+				$("#msg").html(txt);
+			})
+		})
+		//jQuery不支持时间捕获
+	</script>
+</html>
